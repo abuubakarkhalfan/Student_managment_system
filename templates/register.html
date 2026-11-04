@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>Create Account | Student Registration System</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #063b73, #087f8c, #12b8a6);
+        display: flex;
+        flex-direction: column;
+        color: #263746;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 22px 8%;
+        background: white;
+    }
+
+    .logo {
+        font-size: 23px;
+        font-weight: bold;
+        color: #075985;
+        text-decoration: none;
+    }
+
+    .logo span {
+        color: #10b981;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #334155;
+        margin-left: 22px;
+        font-weight: 600;
+    }
+
+    .container {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
+    .register-card {
+        width: 100%;
+        max-width: 480px;
+        background: white;
+        padding: 38px;
+        border-radius: 18px;
+        box-shadow: 0 20px 55px rgba(0, 0, 0, 0.2);
+    }
+
+    .icon {
+        width: 65px;
+        height: 65px;
+        margin: 0 auto 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 18px;
+        background: #dcfce7;
+        font-size: 30px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 10px;
+        color: #0f2742;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #64748b;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+
+    label {
+        display: block;
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 7px;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px 13px;
+        border: 1px solid #cbd5e1;
+        border-radius: 9px;
+        font-size: 15px;
+        margin-bottom: 14px;
+        outline: none;
+    }
+
+    input:focus {
+        border-color: #0284c7;
+        box-shadow: 0 0 0 3px #e0f2fe;
+    }
+
+    .help {
+        display: block;
+        color: #64748b;
+        font-size: 12px;
+        line-height: 1.5;
+        margin-top: -8px;
+        margin-bottom: 14px;
+    }
+
+    .register-button {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 9px;
+        background: linear-gradient(90deg, #0369a1, #0891b2);
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+
+    .register-button:hover {
+        opacity: 0.9;
+    }
+
+    .error {
+        color: #b91c1c;
+        font-size: 13px;
+        line-height: 1.6;
+        margin: -8px 0 14px;
+        list-style-position: inside;
+    }
+
+    .login-link {
+        text-align: center;
+        margin-top: 23px;
+        color: #64748b;
+        font-size: 14px;
+    }
+
+    .login-link a {
+        color: #0284c7;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        color: white;
+        font-size: 13px;
+    }
+
+    @media (max-width: 480px) {
+        nav {
+            padding: 18px 5%;
+        }
+
+        .logo {
+            font-size: 18px;
+        }
+
+        nav a {
+            margin-left: 10px;
+            font-size: 13px;
+        }
+
+        .register-card {
+            padding: 28px 22px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<nav>
+    <a href="{% url 'home' %}" class="logo">
+        Student<span>Portal</span>
+    </a>
+
+    <div>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<main class="container">
+    <section class="register-card">
+
+        <div class="icon">🎓</div>
+
+        <h1>Create Your Account</h1>
+
+        <p class="subtitle">
+            Join our Student Registration System and
+            manage your academic information online.
+        </p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <ul class="error">
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <label for="{{ form.username.id_for_label }}">
+                Username
+            </label>
+
+            <input
+                type="text"
+                name="username"
+                id="{{ form.username.id_for_label }}"
+                value="{{ form.username.value|default_if_none:'' }}"
+                placeholder="Choose a username"
+                autocomplete="username"
+                required
+            >
+
+            {% if form.username.errors %}
+                <ul class="error">
+                    {% for error in form.username.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <small class="help">
+                Use a unique username to identify your account.
+            </small>
+
+            <label for="{{ form.password1.id_for_label }}">
+                Password
+            </label>
+
+            <input
+                type="password"
+                name="password1"
+                id="{{ form.password1.id_for_label }}"
+                placeholder="Create a strong password"
+                autocomplete="new-password"
+                required
+            >
+
+            {% if form.password1.errors %}
+                <ul class="error">
+                    {% for error in form.password1.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <label for="{{ form.password2.id_for_label }}">
+                Confirm Password
+            </label>
+
+            <input
+                type="password"
+                name="password2"
+                id="{{ form.password2.id_for_label }}"
+                placeholder="Enter your password again"
+                autocomplete="new-password"
+                required
+            >
+
+            {% if form.password2.errors %}
+                <ul class="error">
+                    {% for error in form.password2.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <button type="submit" class="register-button">
+                Create My Account
+            </button>
+        </form>
+
+        <p class="login-link">
+            Already have an account?
+            <a href="{% url 'login' %}">Sign in</a>
+        </p>
+
+    </section>
+</main>
+
+<footer>
+    &copy; 2026 Student Registration System.
+    All rights reserved.
+</footer>
+```
+
+</body>
+</html>

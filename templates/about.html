@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | Student Registration System</title>
+
+    <style>
+        /* GENERAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* NAVIGATION BAR */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            min-height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            color: #123c69;
+        }
+
+        .logo span {
+            color: #0d9488;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #334155;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #0d9488;
+        }
+
+        .nav-links .login-btn {
+            background-color: #123c69;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+
+        .nav-links .login-btn:hover {
+            background-color: #0d9488;
+            color: #ffffff;
+        }
+
+        /* PAGE HERO */
+        .page-hero {
+            background: linear-gradient(120deg, #123c69, #0f766e);
+            color: #ffffff;
+            text-align: center;
+            padding: 85px 20px;
+        }
+
+        .page-hero .label {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(35px, 5vw, 48px);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .page-hero h1 span {
+            color: #5eead4;
+        }
+
+        .page-hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #e2e8f0;
+            font-size: 17px;
+        }
+
+        /* SECTION COMMON STYLES */
+        section {
+            scroll-margin-top: 90px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading .subtitle {
+            color: #0d9488;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .section-heading h2 {
+            color: #123c69;
+            font-size: 34px;
+            margin: 10px 0;
+        }
+
+        .section-heading p {
+            max-width: 700px;
+            margin: auto;
+            color: #64748b;
+        }
+
+        /* ABOUT INTRODUCTION */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: #123c69;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+
+        .about-highlight {
+            background-color: #ccfbf1;
+            border-left: 5px solid #0d9488;
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 25px;
+            color: #134e4a;
+        }
+
+        .about-visual {
+            background: linear-gradient(145deg, #dbeafe, #ccfbf1);
+            border-radius: 20px;
+            min-height: 340px;
+            padding: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .visual-card {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 350px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(18, 60, 105, 0.12);
+        }
+
+        .visual-card .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .visual-card h3 {
+            color: #123c69;
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .visual-card p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .visual-item {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+            font-size: 14px;
+        }
+
+        .visual-item:last-child {
+            border-bottom: none;
+        }
+
+        .check {
+            color: #0d9488;
+            font-weight: bold;
+        }
+
+        /* MISSION AND VISION */
+        .mission-vision {
+            background-color: #eef6f8;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .info-card {
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+        }
+
+        .info-icon {
+            width: 58px;
+            height: 58px;
+            background-color: #ccfbf1;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 27px;
+            margin-bottom: 20px;
+        }
+
+        .info-card h3 {
+            color: #123c69;
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .info-card p {
+            color: #64748b;
+        }
+
+        /* OBJECTIVES */
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .objective-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 28px;
+            border-radius: 12px;
+        }
+
+        .objective-number {
+            color: #0d9488;
+            font-size: 27px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .objective-card h3 {
+            color: #123c69;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .objective-card p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* CORE VALUES */
+        .values {
+            background-color: #eef6f8;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .value-card {
+            background-color: #ffffff;
+            padding: 25px 20px;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .value-card .icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .value-card h3 {
+            color: #123c69;
+            margin-bottom: 8px;
+        }
+
+        .value-card p {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        /* WHY CHOOSE US */
+        .why-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .why-text h2 {
+            color: #123c69;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .why-text > p {
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        .benefit {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+        .benefit-icon {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            background-color: #ccfbf1;
+            color: #0f766e;
+            font-weight: bold;
+        }
+
+        .benefit h3 {
+            color: #123c69;
+            font-size: 17px;
+            margin-bottom: 4px;
+        }
+
+        .benefit p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .why-panel {
+            background: linear-gradient(145deg, #123c69, #0f766e);
+            padding: 40px;
+            border-radius: 18px;
+            color: #ffffff;
+        }
+
+        .why-panel h3 {
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .why-panel p {
+            color: #dbeafe;
+            margin-bottom: 20px;
+        }
+
+        .panel-list {
+            list-style: none;
+        }
+
+        .panel-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .panel-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* CALL TO ACTION */
+        .cta {
+            padding: 75px 20px;
+            background-color: #123c69;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #dbeafe;
+            max-width: 650px;
+            margin: 0 auto 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #5eead4;
+            color: #123c69;
+        }
+
+        .btn-primary:hover {
+            background-color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #0b1f35;
+            color: #cbd5e1;
+            padding: 35px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: #5eead4;
+        }
+
+        .copyright {
+            border-top: 1px solid #26394d;
+            margin-top: 25px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .about-content,
+            .why-content {
+                grid-template-columns: 1fr;
+            }
+
+            .objectives-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 15px 0;
+                flex-wrap: wrap;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                gap: 14px;
+                padding-bottom: 10px;
+            }
+
+            .page-hero {
+                padding: 65px 15px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-heading h2,
+            .about-text h2,
+            .why-text h2,
+            .cta h2 {
+                font-size: 27px;
+            }
+
+            .two-column,
+            .objectives-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-card,
+            .why-panel {
+                padding: 25px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <div class="container navbar">
+
+            <a href="{% url 'home' %}" class="logo">
+                Student<span>Portal</span>
+            </a>
+
+            <nav class="nav-links">
+
+                <a href="{% url 'home' %}">Home</a>
+
+                <a href="{% url 'about' %}" class="active">
+                    About
+                </a>
+
+                <a href="{% url 'home' %}#features">
+                    Features
+                </a>
+                <a href="{% url 'about' %}#how-it-works">
+                    How It Works
+                </a>
+
+                <a href="{% url 'home' %}#contact">
+                    Contact
+                </a>
+
+                <a href="{% url 'login' %}" class="login-btn">
+                    Login
+                </a>
+
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+
+        <span class="label">GET TO KNOW US</span>
+
+        <h1>About <span>StudentPortal</span></h1>
+
+        <p>
+            Discover our mission, vision, and commitment to
+            making student registration simpler, more organized,
+            and more accessible.
+        </p>
+
+    </section>
+
+
+    <!-- ABOUT INTRODUCTION -->
+    <section class="section">
+
+        <div class="container about-content">
+
+            <div class="about-text">
+
+                <h2>Who We Are</h2>
+
+                <p>
+                    StudentPortal is a web-based Student Registration
+                    System designed to simplify the process of
+                    registering students and managing their information.
+                </p>
+
+                <p>
+                    The system provides a centralized platform where
+                    authorized users can manage student registration
+                    records, access relevant information, and perform
+                    permitted administrative tasks.
+                </p>
+
+                <p>
+                    By reducing dependence on manual paperwork,
+                    the system aims to improve efficiency, organization,
+                    and the accessibility of student records.
+                </p>
+
+                <div class="about-highlight">
+
+                    <strong>Our Commitment:</strong>
+
+                    We aim to make student registration easier,
+                    more organized, and more efficient through
+                    technology.
+
+                </div>
+
+            </div>
+
+
+            <div class="about-visual">
+
+                <div class="visual-card">
+
+                    <div class="icon">🎓</div>
+
+                    <h3>Student Registration Made Simple</h3>
+
+                    <p>
+                        A centralized platform for organizing
+                        student information and supporting
+                        registration activities.
+                    </p>
+
+                    <div class="visual-item">
+                        <span class="check">✓</span>
+                        Organized student records
+                    </div>
+
+                    <div class="visual-item">
+                        <span class="check">✓</span>
+                        Convenient registration process
+                    </div>
+
+                    <div class="visual-item">
+                        <span class="check">✓</span>
+                        Controlled access to information
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MISSION AND VISION -->
+    <section class="section mission-vision">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="subtitle">Our Purpose</span>
+
+                <h2>Mission and Vision</h2>
+
+                <p>
+                    Our purpose is to support efficient student
+                    registration through reliable digital solutions.
+                </p>
+
+            </div>
+
+
+            <div class="two-column">
+
+                <div class="info-card">
+
+                    <div class="info-icon">🎯</div>
+
+                    <h3>Our Mission</h3>
+
+                    <p>
+                        To simplify student registration and improve
+                        the management of student information through
+                        an accessible, organized, and user-friendly
+                        digital platform.
+                    </p>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">🔭</div>
+
+                    <h3>Our Vision</h3>
+
+                    <p>
+                        To become a reliable digital platform that
+                        supports modern student registration and
+                        contributes to more efficient academic
+                        administration.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- OBJECTIVES -->
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="subtitle">Our Goals</span>
+
+                <h2>Our Objectives</h2>
+
+                <p>
+                    The system is designed to address common
+                    challenges in student registration and
+                    information management.
+                </p>
+
+            </div>
+
+
+            <div class="objectives-grid">
+
+                <div class="objective-card">
+
+                    <div class="objective-number">01</div>
+
+                    <h3>Simplify Registration</h3>
+
+                    <p>
+                        Provide a straightforward process for
+                        collecting and submitting student details.
+                    </p>
+
+                </div>
+
+
+                <div class="objective-card">
+
+                    <div class="objective-number">02</div>
+
+                    <h3>Organize Records</h3>
+
+                    <p>
+                        Store student information in a structured
+                        database for easier retrieval and management.
+                    </p>
+
+                </div>
+
+
+                <div class="objective-card">
+
+                    <div class="objective-number">03</div>
+
+                    <h3>Reduce Paperwork</h3>
+
+                    <p>
+                        Minimize unnecessary paper-based activities
+                        through digital registration processes.
+                    </p>
+
+                </div>
+
+
+                <div class="objective-card">
+
+                    <div class="objective-number">04</div>
+
+                    <h3>Improve Efficiency</h3>
+
+                    <p>
+                        Help authorized staff perform registration
+                        tasks more efficiently.
+                    </p>
+
+                </div>
+
+
+                <div class="objective-card">
+
+                    <div class="objective-number">05</div>
+
+                    <h3>Protect Information</h3>
+
+                    <p>
+                        Support appropriate access controls and
+                        responsible handling of student information.
+                    </p>
+
+                </div>
+
+
+                <div class="objective-card">
+
+                    <div class="objective-number">06</div>
+
+                    <h3>Support Administration</h3>
+
+                    <p>
+                        Make student registration records easier
+                        to review and manage.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CORE VALUES -->
+    <section class="section values">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="subtitle">What Guides Us</span>
+
+                <h2>Our Core Values</h2>
+
+                <p>
+                    The principles that guide the design and
+                    intended use of our platform.
+                </p>
+
+            </div>
+
+
+            <div class="values-grid">
+
+                <div class="value-card">
+
+                    <div class="icon">🔐</div>
+
+                    <h3>Security</h3>
+
+                    <p>
+                        Protecting student information through
+                        appropriate security practices.
+                    </p>
+
+                </div>
+
+
+                <div class="value-card">
+
+                    <div class="icon">⚡</div>
+
+                    <h3>Efficiency</h3>
+
+                    <p>
+                        Making registration tasks easier
+                        and more organized.
+                    </p>
+
+                </div>
+
+
+                <div class="value-card">
+
+                    <div class="icon">🤝</div>
+
+                    <h3>Integrity</h3>
+
+                    <p>
+                        Encouraging accurate records and
+                        responsible information management.
+                    </p>
+
+                </div>
+
+
+                <div class="value-card">
+
+                    <div class="icon">💡</div>
+
+                    <h3>Innovation</h3>
+
+                    <p>
+                        Using technology to improve registration
+                        and administrative processes.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- WHY CHOOSE US -->
+    <section class="section">
+
+        <div class="container why-content">
+
+            <div class="why-text">
+
+                <h2>Why Choose StudentPortal?</h2>
+
+                <p>
+                    StudentPortal is designed to make student
+                    registration and information management
+                    more convenient.
+                </p>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">✓</div>
+
+                    <div>
+
+                        <h3>User-Friendly Interface</h3>
+
+                        <p>
+                            A clear layout designed to help
+                            users navigate the platform easily.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">✓</div>
+
+                    <div>
+
+                        <h3>Centralized Information</h3>
+
+                        <p>
+                            A structured place to manage
+                            student registration records.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">✓</div>
+
+                    <div>
+
+                        <h3>Convenient Access</h3>
+
+                        <p>
+                            A responsive interface for
+                            computers, tablets, and phones.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">✓</div>
+
+                    <div>
+
+                        <h3>Organized Administration</h3>
+
+                        <p>
+                            Support for common student
+                            registration and record-management tasks.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="why-panel">
+
+                <h3>Building a Better Registration Experience</h3>
+
+                <p>
+                    Our goal is to support students and
+                    administrators with a clear and organized
+                    digital registration process.
+                </p>
+
+                <ul class="panel-list">
+
+                    <li>✓ Simple registration process</li>
+
+                    <li>✓ Organized student information</li>
+
+                    <li>✓ Responsive website design</li>
+
+                    <li>✓ Convenient access to available services</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CALL TO ACTION -->
+    <section class="cta">
+
+        <div class="container">
+
+            <h2>Start Your Registration Journey</h2>
+
+            <p>
+                Join our platform and experience a simpler
+                approach to student registration and
+                information management.
+            </p>
+
+            <a href="{% url 'register' %}" class="btn btn-primary">
+                Register Now &rarr;
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div>
+
+                    <div class="footer-brand">
+                        StudentPortal
+                    </div>
+
+                    <p>
+                        A smarter way to manage student registration.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <a href="{% url 'home' %}">Home</a>
+
+                    <a href="{% url 'about' %}">About</a>
+
+                    <a href="{% url 'home' %}#features">
+                        Features
+                    </a>
+                    <a href="{% url 'about' %}#how-it-works">
+                        How It Works
+                    </a>
+
+                    <a href="{% url 'home' %}#contact">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="copyright">
+
+                <p>
+                    &copy; {% now "Y" %} StudentPortal.
+                    All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
