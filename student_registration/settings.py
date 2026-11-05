@@ -27,7 +27,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-local-development-onl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+ALLOWED_HOSTS = [
+    "studentmanagmentsystem-production-286e.up.railway.app",
+    "localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
