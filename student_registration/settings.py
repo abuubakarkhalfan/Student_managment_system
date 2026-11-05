@@ -29,6 +29,7 @@ DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = [
     "studentmanagmentsystem-production-fea5.up.railway.app",
+    "studentmanagmentsystem-production-286e.up.railway.app"
     "localhost",
     "127.0.0.1",
 ]
@@ -55,6 +56,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://studentmanagmentsystem-production-fea5.up.railway.app",
 ]
 
 ROOT_URLCONF = "student_registration.urls"
